@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Sudoris</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. WELCOME SCREEN -->
+    <div id="welcome-screen" class="screen active">
+    <!--
+        <div class="logo-circle">
+            <span class="logo-text">S</span>x
+            <img src="logo-foreground.png"/>
+        </div>
+    -->
+        <h1 class="game-title">SUDORIS</h1>
+        
+        <div class="menu-buttons">
+            <button class="menu-btn primary" onclick="goToGame()">PLAY</button>
+            <button class="menu-btn" onclick="goToMap()">ROADMAP</button>
+        </div>
+    </div>
+
+    <!-- 2. MAP SCREEN -->
+    <div id="map-screen" class="screen">
+        <div class="header">
+            <button class="icon-btn" onclick="goHome()">⬅</button>
+            <h2>Levels</h2>
+            <div style="width: 40px;"></div>
+        </div>
+        <div id="level-map-container" class="map-grid">
+            <!-- JS will fill this -->
+        </div>
+    </div>
+
+    <!-- 3. GAME SCREEN -->
+    <div id="game-screen" class="screen">
+        <div class="header">
+            <button class="icon-btn" onclick="pauseAndGoHome()">❚❚</button>
+            <h2 id="level-display">Level 1</h2>
+            <button class="icon-btn" onclick="resetCurrentLevel()">↻</button>
+        </div>
+
+        <div class="game-content">
+            <div id="game-board"></div>
+        </div>
+
+        <!-- Tray Area -->
+        <div id="pieces-container"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

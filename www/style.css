@@ -1,0 +1,133 @@
+:root {
+    --bg-color: #FFFBF0;      
+    --primary-color: #FF8A65; 
+    --text-color: #263238;    
+    --hint-gray: #CFD8DC;     
+    --placed-color: #FFCCBC;  
+    --white: #FFFFFF;
+    --highlight-color: rgba(33, 150, 243, 0.4);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    width: 100vw; height: 100vh;
+    overflow: hidden;
+    user-select: none; -webkit-user-select: none; touch-action: none;
+}
+
+/* SCREEN LAYOUT */
+.screen {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: var(--bg-color);
+    display: none; flex-direction: column; align-items: center;
+    padding: 20px;
+    padding-top: 50px; /* Safe area / Notch fix */
+    z-index: 10;
+}
+.screen.active { display: flex; }
+
+/* WELCOME */
+#welcome-screen { justify-content: center; padding-top: 0; }
+.logo-circle {
+    width: 100px; height: 100px;
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    border: 4px solid var(--text-color);
+    box-shadow: 5px 5px 0 var(--text-color);
+}
+.logo-text { font-size: 3rem; font-weight: 900; color: var(--bg-color); }
+.game-title { font-size: 2.5rem; margin-bottom: 50px; letter-spacing: 3px; color: var(--text-color); }
+.menu-buttons { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+.menu-btn {
+    width: 80%; max-width: 250px; padding: 15px;
+    font-size: 1.2rem; font-weight: bold;
+    background: transparent; border: 3px solid var(--text-color);
+    border-radius: 10px; color: var(--text-color);
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+}
+.menu-btn.primary {
+    background-color: var(--primary-color); color: white;
+    border-color: var(--text-color); box-shadow: 4px 4px 0 var(--text-color);
+}
+.menu-btn:active { transform: scale(0.95); box-shadow: 2px 2px 0 var(--text-color); }
+
+/* HEADER */
+.header {
+    width: 100%; display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 20px; height: 50px; padding: 0 5px;
+}
+.icon-btn { background: none; border: none; font-size: 1.8rem; font-weight: bold; color: var(--text-color); padding: 5px; }
+
+/* MAP */
+.map-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;
+    width: 100%; max-width: 400px; overflow-y: auto; padding-bottom: 20px;
+}
+.level-node {
+    aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+    border: 2px solid #ccc; border-radius: 10px; font-weight: bold; font-size: 1.1rem; color: #999;
+}
+.level-node.completed { background-color: var(--hint-gray); color: #555; border-color: #555; }
+.level-node.current {
+    background-color: var(--primary-color); color: white;
+    border: 2px solid var(--text-color); box-shadow: 3px 3px 0 var(--text-color);
+    transform: scale(1.05);
+}
+
+/* GAME BOARD */
+#game-screen { justify-content: flex-start; padding-bottom: 0; }
+.game-content {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+#game-board {
+    display: grid; gap: 2px;
+    background-color: var(--text-color); padding: 4px; border-radius: 6px;
+}
+
+.cell {
+    background-color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 1.3rem; color: var(--text-color);
+    transition: background-color 0.1s;
+    border-radius: 2px;
+}
+.cell.fixed { background-color: var(--hint-gray); color: #444; }
+.cell.placed-piece { background-color: var(--placed-color); color: #BF360C; }
+.cell.highlight { background-color: var(--highlight-color) !important; }
+
+/* PIECES TRAY */
+#pieces-container {
+    width: 100%;
+    height: 250px; /* Büyütüldü */
+    background-color: #F0ECE2;
+    border-top: 4px solid var(--text-color);
+    display: flex; flex-wrap: wrap;
+    justify-content: center; align-content: flex-start;
+    gap: 20px; padding: 25px;
+    overflow-y: auto;
+}
+.draggable-piece { display: grid; gap: 1px; touch-action: none; }
+.piece-cell {
+    width: 40px; height: 40px; /* Parçalar daha büyük */
+    background-color: var(--primary-color); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; border: 1px solid rgba(255,255,255,0.3); border-radius: 4px;
+    font-size: 1.1rem;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+/* DRAGGING GHOST */
+.dragging {
+    position: fixed; z-index: 9999; opacity: 0.9;
+    pointer-events: none;
+    filter: drop-shadow(5px 15px 15px rgba(0,0,0,0.4));
+    transform-origin: top left;
+}
