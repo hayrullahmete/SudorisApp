@@ -1,0 +1,9 @@
+node_modules/
+android/build/
+android/app/build/
+# Gradle önbellek ve derleme çıktıları
+**/gradle/caches/
+**/gradle/wrapper/dists/
+**/.gradle/
+**/build/
+.idea/

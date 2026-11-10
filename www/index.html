@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#10172c">
+    <title>Sudoris — Bloklarını yerleştir</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main id="welcome-screen" class="screen home-screen active">
+        <div class="home-topbar">
+            <div class="brand-lockup"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>SUDORIS</span></div>
+            <div class="home-tools">
+                <div class="language-switch compact" role="group" data-i18n-aria-label="language.switch" aria-label="Dil seçimi">
+                    <button class="language-chip" data-language-choice="tr" onclick="setLanguage('tr')" aria-pressed="true">🇹🇷 <span>TR</span></button>
+                    <button class="language-chip" data-language-choice="en" onclick="setLanguage('en')" aria-pressed="false">🇬🇧 <span>EN</span></button>
+                </div>
+                <button class="settings-button" onclick="goToSettings()" data-i18n-aria-label="settings.open" aria-label="Ayarları aç">⚙</button>
+            </div>
+        </div>
+
+        <section class="hero-copy" data-i18n-aria-label="home.welcome" aria-label="Sudoris'e hoş geldin">
+            <div class="eyebrow"><span class="eyebrow-dot"></span> <span data-i18n="home.eyebrow">ZİHİN AÇAN BLOK BULMACASI</span></div>
+            <h1><span class="hero-title-first" data-i18n="home.title.first">Her blok,</span><br><span data-i18n="home.title.second">yerini bulur.</span></h1>
+            <p><span data-i18n="home.description.first">Sayıları çöz. Parçaları yerleştir.</span><br><span data-i18n="home.description.second">Tahtayı tamamla.</span></p>
+        </section>
+
+        <div class="hero-art-wrap" aria-hidden="true">
+            <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+            <img class="hero-art" src="sudoris-hero.svg" alt="">
+            <span class="spark spark-a">✦</span><span class="spark spark-b">✧</span><span class="spark spark-c">·</span>
+        </div>
+
+        <section class="home-actions">
+            <div class="continue-card">
+                <div class="continue-icon" aria-hidden="true">✦</div>
+                <div class="continue-copy"><span data-i18n="home.journey">YOLCULUĞUN</span><strong id="home-progress-label">Seviye 1 seni bekliyor</strong></div>
+                <span class="continue-arrow" aria-hidden="true">›</span>
+            </div>
+            <button class="primary-button" onclick="goToGame()"><span data-i18n="home.play">OYUNA BAŞLA</span><span class="button-arrow" aria-hidden="true">→</span></button>
+            <button class="secondary-button" onclick="goToMap()"><span data-i18n="home.map">SEVİYE HARİTASI</span><span aria-hidden="true">⌁</span></button>
+        </section>
+        <div class="home-footnote"><span>✦</span> <span data-i18n="home.footnote">Sakin ol. Bir sonraki hamle sende.</span></div>
+    </main>
+
+    <main id="settings-screen" class="screen settings-screen">
+        <header class="screen-header">
+            <button class="round-icon-button" onclick="goHome()" data-i18n-aria-label="common.back" aria-label="Ana ekrana dön">←</button>
+            <div class="screen-header-title"><span data-i18n="settings.section">TERCİHLER</span><h2 data-i18n="settings.title">Ayarlar</h2></div>
+            <div class="header-spacer"></div>
+        </header>
+        <section class="settings-panel">
+            <div class="settings-icon" aria-hidden="true">文</div>
+            <div class="settings-copy"><span data-i18n="settings.section">TERCİHLER</span><h3 data-i18n="settings.language">Uygulama dili</h3><p data-i18n="settings.languageDescription">Sudoris'te kullanmak istediğin dili seç.</p></div>
+            <div class="language-options" role="group" data-i18n-aria-label="settings.language" aria-label="Uygulama dili">
+                <button class="language-option" data-language-choice="tr" onclick="setLanguage('tr')" aria-pressed="true"><span class="language-flag" aria-hidden="true">🇹🇷</span><span class="language-name">Türkçe</span><span class="language-check" aria-hidden="true">✓</span></button>
+                <button class="language-option" data-language-choice="en" onclick="setLanguage('en')" aria-pressed="false"><span class="language-flag" aria-hidden="true">🇬🇧</span><span class="language-name">English</span><span class="language-check" aria-hidden="true">✓</span></button>
+            </div>
+            <p class="settings-note" data-i18n="settings.note">Dil tercihin bu cihazda saklanır ve tüm ekranlara uygulanır.</p>
+        </section>
+        <div class="settings-footer"><span>✦</span> SUDORIS</div>
+    </main>
+
+    <main id="map-screen" class="screen map-screen">
+        <header class="screen-header">
+            <button class="round-icon-button" onclick="goHome()" data-i18n-aria-label="common.back" aria-label="Ana ekrana dön">←</button>
+            <div class="screen-header-title"><span data-i18n="home.journey">YOLCULUĞUN</span><h2 data-i18n="map.title">Seviye haritası</h2></div>
+            <div class="header-spacer"></div>
+        </header>
+        <section class="map-summary">
+            <div><span id="map-chapter-label" class="summary-kicker">BÖLÜM 01</span><h3 id="map-chapter-title">İlk adımlar</h3><p id="map-chapter-description">Her seviyede yeni bir meydan okuma.</p></div>
+            <div class="map-progress-ring"><strong id="map-progress-count">0/40</strong><span data-i18n="map.complete">TAMAM</span></div>
+        </section>
+        <div class="map-reset-row">
+            <button id="reset-level-map-button" class="map-reset-button" onclick="resetLevelMap()" data-i18n="reset.mapButton">Tüm haritayı sıfırla</button>
+        </div>
+        <div class="map-section-label"><span data-i18n="map.island">SEVİYE YOLCULUĞU</span><span>✦</span></div>
+        <div id="level-map-container" class="map-grid" data-i18n-aria-label="map.levels" aria-label="Seviyeler"></div>
+        <div class="map-tip"><span>✦</span> <span data-i18n="map.tip">Bitirdiğin seviyeleri dilediğin zaman tekrar oynayabilirsin.</span></div>
+    </main>
+
+    <main id="game-screen" class="screen game-screen">
+        <header class="game-header">
+            <button class="round-icon-button" onclick="pauseAndGoHome()" data-i18n-aria-label="common.back" aria-label="Ana ekrana dön">⌂</button>
+            <div class="game-level-heading"><span data-i18n="game.eyebrow">ADIM ADIM</span><h2 id="level-display">Seviye 1</h2></div>
+            <button class="round-icon-button reset-button" onclick="resetCurrentLevel()" data-i18n-aria-label="game.restart" aria-label="Seviyeyi yeniden başlat">↻</button>
+        </header>
+        <section class="level-progress" data-i18n-aria-label="game.progress" aria-label="Seviye ilerlemesi">
+            <div class="progress-label"><span data-i18n="game.boardProgress">TAHTA İLERLEMESİ</span><strong id="board-progress-label">0%</strong></div>
+            <div class="progress-track"><div id="board-progress-fill" class="progress-fill"></div></div>
+        </section>
+        <section class="game-content">
+            <div class="board-caption"><span>✦</span> <span data-i18n="game.boardCaption">SAYILARI TAMAMLA</span></div>
+            <div class="board-frame"><div id="game-board" data-i18n-aria-label="game.board" aria-label="Oyun tahtası"></div></div>
+            <div class="board-hint"><span class="hint-swatch"></span> <span data-i18n="game.fixedNumbers">Sabit sayılar</span> <span class="hint-separator">·</span> <span data-i18n="game.dragHint">Parçaları boş hücrelere sürükle</span></div>
+        </section>
+        <section class="piece-dock">
+            <div class="dock-heading"><div><span data-i18n="game.piecesEyebrow">HAMLE SIRASI</span><h3 data-i18n="game.choosePieces">Parçalarını seç</h3></div><div id="piece-count" class="piece-count">0 PARÇA</div></div>
+            <div id="pieces-container" data-i18n-aria-label="game.pieces" aria-label="Yerleştirilecek parçalar"></div>
+        </section>
+    </main>
+
+    <div id="progression-modal" class="progression-overlay" role="dialog" aria-modal="true" aria-labelledby="progression-title" aria-describedby="progression-message" data-i18n-aria-label="progression.dialog" aria-label="Seviye ilerleme bildirimi" hidden>
+        <section class="progression-card">
+            <div class="progression-emblem" aria-hidden="true"><span>✦</span><i></i><i></i><i></i></div>
+            <span class="progression-eyebrow" data-i18n="progression.eyebrow">GÜZEL İŞ</span>
+            <h2 id="progression-title"></h2>
+            <p id="progression-message"></p>
+            <button id="progression-continue" class="primary-button progression-button" onclick="continueAfterProgression()" type="button"></button>
+        </section>
+    </div>
+
+    <script src="i18n.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

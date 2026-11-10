@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 432" fill="none">
+  <defs>
+    <linearGradient id="mint" x1="101" y1="92" x2="160" y2="166" gradientUnits="userSpaceOnUse"><stop stop-color="#C6FFE1"/><stop offset="1" stop-color="#5AC79D"/></linearGradient>
+    <linearGradient id="coral" x1="212" y1="92" x2="275" y2="165" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB4A1"/><stop offset="1" stop-color="#E77976"/></linearGradient>
+    <linearGradient id="lilac" x1="101" y1="211" x2="163" y2="279" gradientUnits="userSpaceOnUse"><stop stop-color="#C7B8FF"/><stop offset="1" stop-color="#8372D8"/></linearGradient>
+    <linearGradient id="sun" x1="218" y1="211" x2="279" y2="278" gradientUnits="userSpaceOnUse"><stop stop-color="#FFE39A"/><stop offset="1" stop-color="#E6AF59"/></linearGradient>
+    <filter id="shadow" x="68" y="65" width="306" height="310" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feGaussianBlur in="SourceAlpha" stdDeviation="12"/><feOffset dy="13"/><feComponentTransfer><feFuncA type="linear" slope=".42"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <g transform="translate(38.88 38.88) scale(.82)">
+  <g filter="url(#shadow)">
+    <g transform="rotate(-6 216 216)">
+      <rect x="91" y="89" width="110" height="110" rx="29" fill="url(#mint)"/>
+      <rect x="97" y="95" width="98" height="98" rx="24" stroke="#fff" stroke-opacity=".35" stroke-width="3"/>
+      <path d="M112 111h35" stroke="#fff" stroke-linecap="round" stroke-opacity=".3" stroke-width="5"/>
+
+      <rect x="223" y="89" width="110" height="110" rx="29" fill="url(#coral)"/>
+      <rect x="229" y="95" width="98" height="98" rx="24" stroke="#fff" stroke-opacity=".35" stroke-width="3"/>
+      <path d="M244 111h35" stroke="#fff" stroke-linecap="round" stroke-opacity=".3" stroke-width="5"/>
+
+      <rect x="91" y="211" width="110" height="110" rx="29" fill="url(#lilac)"/>
+      <rect x="97" y="217" width="98" height="98" rx="24" stroke="#fff" stroke-opacity=".35" stroke-width="3"/>
+      <path d="M112 233h35" stroke="#fff" stroke-linecap="round" stroke-opacity=".3" stroke-width="5"/>
+
+      <rect x="223" y="211" width="110" height="110" rx="29" fill="url(#sun)"/>
+      <rect x="229" y="217" width="98" height="98" rx="24" stroke="#fff" stroke-opacity=".38" stroke-width="3"/>
+      <path d="M244 233h35" stroke="#fff" stroke-linecap="round" stroke-opacity=".34" stroke-width="5"/>
+    </g>
+  </g>
+  <path d="m351 102 5 13 13 5-13 5-5 13-5-13-13-5 13-5 5-13Z" fill="#FFD36E"/>
+  <circle cx="83" cy="300" r="7" fill="#A6F2CD"/>
+  </g>
+</svg>
